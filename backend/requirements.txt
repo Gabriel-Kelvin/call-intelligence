@@ -1,0 +1,11 @@
+fastapi>=0.116,<1
+uvicorn[standard]>=0.35,<1
+langchain-core>=0.3,<2
+langchain-community>=0.3,<2
+langchain-text-splitters>=0.3,<2
+langchain-groq>=0.3,<2
+langchain-qdrant>=0.2,<2
+qdrant-client[fastembed]>=1.14,<2
+pydantic-settings>=2.10,<3
+pytest>=8.4,<9
+httpx>=0.28,<1

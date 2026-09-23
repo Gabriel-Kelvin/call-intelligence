@@ -1,15 +1,17 @@
 services:
   - type: web
-    name: call-intelligence
-    runtime: node
+    name: call-intelligence-python-api
+    runtime: python
     plan: free
     region: singapore
-    buildCommand: npm ci && npm run build
-    startCommand: npm run start -- -p $PORT
+    buildCommand: pip install -r backend/requirements.txt
+    startCommand: uvicorn backend.app.main:app --host 0.0.0.0 --port $PORT
     healthCheckPath: /api/health
     autoDeploy: true
     envVars:
-      - key: NODE_VERSION
-        value: 22.13.0
+      - key: PYTHON_VERSION
+        value: 3.12.7
+      - key: QDRANT_PATH
+        value: /tmp/call-intelligence/qdrant
       - key: GROQ_API_KEY
         sync: false

@@ -3,12 +3,12 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   poweredByHeader: false,
   async rewrites() {
-    if (process.env.VERCEL !== "1") return [];
+    const backend = process.env.API_BACKEND_URL || "http://127.0.0.1:8000";
     return {
       beforeFiles: [
         {
           source: "/api/:path*",
-          destination: "https://call-intelligence-6h53.onrender.com/api/:path*",
+          destination: `${backend}/api/:path*`,
         },
       ],
       afterFiles: [],
